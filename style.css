@@ -30,6 +30,8 @@ body{
 
     background-color: rgb(255, 255, 255);
     overflow: hidden;
+    background-image:url("https://image.freepik.com/free-photo/crumpled-white-paperboard_95678-119.jpg");
+    background-size: cover;
     
 }
 
@@ -79,6 +81,16 @@ h1{
     box-shadow: none;
     transform: scale(0.8);
     transition: all 0.3s;
+}
+
+.button-container button:disabled{
+    background-color: grey;
+    box-shadow: none;
+    color:black;
+}
+
+.button-container button:disabled:active{
+    transform: scale(1);
 }
 
 .array-to-text-container{
@@ -167,4 +179,40 @@ h1{
         right:60px;
     }
     
+}
+
+@media (max-width:750px) and (min-width:600px){
+    .visualizer{
+        transform: scale(0.7);
+    }
+    .array-to-text-container{
+        font-size: 20px;
+    }
+    .sorting-status{
+        font-size: 20px;
+    }
+}
+
+@media (min-width:500px) and (max-width:600px){
+    .visualizer{
+        transform: scale(0.6);
+    }
+    .array-to-text-container{
+        font-size: 20px;
+    }
+    .sorting-status{
+        font-size: 20px;
+    }
+}
+
+@media (max-width:500px){
+    .visualizer{
+        transform: scale(0.5);
+    }
+    .array-to-text-container{
+        font-size: 20px;
+    }
+    .sorting-status{
+        font-size: 20px;
+    }
 }

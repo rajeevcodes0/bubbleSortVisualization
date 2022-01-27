@@ -3,6 +3,7 @@ let arrayBeingAnimatedInitialState = [];
 let arrayBeingAnimatedCurrentState = [];
 let globalIndex = 0;
 let globalPass = 1;
+let shouldLoopRun = false;
 
 //dom elements that we need to manipulate
 let visualizer = document.getElementsByClassName("visualizer")[0];
@@ -16,7 +17,8 @@ let sortingStatus = document.getElementsByClassName("sorting-status")[0];
 //default value
 sortingStatus.innerText="Please create a new array";
 
-const indexIncrementHandler = ()=>{
+const indexIncrementHandler = (calledFrom)=>{
+    console.log(calledFrom);
     console.log("inside index handler");
     console.log("globalIndex",globalIndex,"globalPass",globalPass,"length",arrayBeingAnimatedCurrentState.length);
     globalIndex++;
@@ -113,7 +115,9 @@ const sleep = (time)=>{
 
 //event handlers
 const newArrayOnClickHandler =  ()=>{
+    startAnimationButton.disabled=false;
     sortingStatus.innerText="Start Sorting";
+    shouldLoopRun=false;
     let newArray = generateNewArray();
     let arrayToStringValue = convertArrayToString(newArray);
     changeArrayToTextContainer(arrayToStringValue);
@@ -127,10 +131,14 @@ const newArrayOnClickHandler =  ()=>{
 }
 
 const startAnimationOnClickHandler = async()=>{
+    startAnimationButton.disabled=true;
+    console.log("starting animation");
     sortingStatus.innerText="In Progress";
     console.log("HI");
     let iterationCounter = 0;
-    while(true){
+    shouldLoopRun=true;
+    while(shouldLoopRun){
+        console.log("while loop scout");
         
         let index=globalIndex;
         let blocksArray = document.getElementsByClassName("block");
@@ -153,10 +161,13 @@ const startAnimationOnClickHandler = async()=>{
         blocksArray[index+1].classList.remove('block-in-focus');
         blocksArray[index].classList.remove('block-in-focus');
         await sleep(1000);
+        if(!shouldLoopRun){
+            break;
+        }
 
         //increment the index
         //if it returns false,break the while loop
-        if(!indexIncrementHandler()){
+        if(!indexIncrementHandler("called from while loop")){
             sortingStatus.innerText="Completed!";
             break;
         }
