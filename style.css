@@ -8,8 +8,20 @@
 body{
     height: 100vh;
     width: 100vw;
-    background-image: url("https://images.unsplash.com/photo-1552152974-19b9caf99137?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGFyayUyMHBhdHRlcm58ZW58MHx8MHx8&w=1000&q=80");
-    background-size: cover;
+    background-image: radial-gradient(rgb(110, 99, 99),rgb(51, 47, 47));
+}
+
+.blur-overlay{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    left:0;
+    right:0;
+    left:0;
+    filter:blur(6px);
+    background-image: radial-gradient(rgb(110, 99, 99),rgb(51, 47, 47));
+    z-index: 2;
 }
 
 .container{
@@ -28,10 +40,9 @@ body{
     flex-direction: column;
     align-items: center;
 
-    background-color: rgb(255, 255, 255);
+    background-image: radial-gradient(white,rgb(223, 211, 211));
     overflow: hidden;
-    background-image:url("https://image.freepik.com/free-photo/crumpled-white-paperboard_95678-119.jpg");
-    background-size: cover;
+    z-index:3;
     
 }
 
@@ -45,6 +56,7 @@ body{
     bottom:-50px;
     right:-50px;
     border-radius: 100%;
+    box-shadow: 0px 0px 100px 1px darkviolet;
 
 }
 
@@ -55,10 +67,23 @@ h1,h3{
 h1{
     margin:10px 0px;
     width: 100%;
+    color:rgb(71, 67, 67)
+}
+
+.pikachu-container{
+    position: absolute;
+    top:0;
+    height: 100px;
+    width: 100px;
+}
+
+.pikachu-container path,.pikachu-container circle{
+    fill:rgb(97, 5, 136);
 }
 
 .initial-array-text{
     font-size: 20px;
+    margin:20px 0px;
 }
 
 .button-container{
@@ -75,6 +100,7 @@ h1{
     border-radius: 10px;
     box-shadow: 2px 2px 10px 0px grey;
     transition: all 0.3s;
+    cursor: pointer;
 }
 
 .button-container button:active{
@@ -102,7 +128,7 @@ h1{
     font-size: 25px;
     color:rgb(255, 255, 255);
     margin:10px 0px;
-    background-color: rgb(245, 30, 30);
+    background-color: #9400d3;
     padding:10px;
     border-radius: 5px;
 }
@@ -113,14 +139,14 @@ h1{
 }
 
 .block{
-    background-color: rgb(14, 14, 14);
+    background-color: rgb(51, 50, 50);
     color:white;
     width: 60px;
     font-size: 30px;
     text-align: center;
-    border: 1px solid pink;
-    border-radius: 5px;
+    border-radius: 10px;
     transform: scale(0.8);
+    transition: all 0.3s;
     
 }
 
@@ -191,6 +217,10 @@ h1{
     .sorting-status{
         font-size: 20px;
     }
+    .pikachu-container{
+        height: 50px;
+        width: 50px;;
+    }
 }
 
 @media (min-width:500px) and (max-width:600px){
@@ -203,6 +233,10 @@ h1{
     .sorting-status{
         font-size: 20px;
     }
+    .pikachu-container{
+        height: 50px;
+        width: 50px;;
+    }
 }
 
 @media (max-width:500px){
@@ -214,5 +248,9 @@ h1{
     }
     .sorting-status{
         font-size: 20px;
+    }
+    .pikachu-container{
+        height: 50px;
+        width: 50px;;
     }
 }
