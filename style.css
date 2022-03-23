@@ -141,9 +141,10 @@ h1{
 }
 
 .button-container button:disabled{
-    background-color: grey;
+    background-color: rgb(175, 174, 174);
     box-shadow: none;
     color:black;
+    cursor:auto;
 }
 
 .button-container button:disabled:active{
@@ -156,12 +157,31 @@ h1{
 }
 
 .sorting-status{
+    /* for ::before to work */
+    position: relative;
+
     font-size: 25px;
     color:rgb(255, 255, 255);
     margin:10px 0px;
-    background-color: #9400d3;
+    /* lighter color than darkviolet so that users don't confuse it with buttons */
+    color:#ac4ed4;
+    border: 2px dashed #ac4ed4;
     padding:10px;
+    padding-top:20px;
     border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.sorting-status::before{
+    content:"status!";
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: #ac4ed4;
+    border-top-left-radius: 5px;
+    color:white;
+    font-size: 15px;
+    padding:2px 4px;
 }
 
 .visualizer{
