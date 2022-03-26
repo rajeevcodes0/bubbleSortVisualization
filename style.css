@@ -156,7 +156,7 @@ h1{
     font-size: 30px;
 }
 
-.sorting-status{
+.sorting-status-div{
     /* for ::before to work */
     position: relative;
 
@@ -172,7 +172,7 @@ h1{
     transition: all 0.3s;
 }
 
-.sorting-status::before{
+.sorting-status-div::before{
     content:"status!";
     position: absolute;
     top:0;
@@ -265,7 +265,7 @@ h1{
     .array-to-text-container{
         font-size: 20px;
     }
-    .sorting-status{
+    .sorting-status-div{
         font-size: 20px;
     }
     .pikachu-container{
@@ -281,7 +281,7 @@ h1{
     .array-to-text-container{
         font-size: 20px;
     }
-    .sorting-status{
+    .sorting-status-div{
         font-size: 20px;
     }
     .pikachu-container{
@@ -297,7 +297,7 @@ h1{
     .array-to-text-container{
         font-size: 20px;
     }
-    .sorting-status{
+    .sorting-status-div{
         font-size: 20px;
     }
     .pikachu-container{
