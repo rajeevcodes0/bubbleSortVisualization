@@ -1,17 +1,8 @@
 const convertArrayToString=(targetArray)=>{
-    
-    let convertedArray = '[';
-
-    for(let i=0;i<targetArray.length;i++){
-        convertedArray+=targetArray[i].toString();
-        if(i+1!==targetArray.length){
-            convertedArray+=',';
-        }else{
-            convertedArray+=']';
-        }
+    if(typeof targetArray==="undefined"){
+        throw new Error("targetArray is undefined, no argument passed");
     }
-
-    return convertedArray;
+    return "["+targetArray.toString()+"]";
 }
 
 export {convertArrayToString};
