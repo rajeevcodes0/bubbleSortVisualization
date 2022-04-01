@@ -4,15 +4,15 @@ const addBlocksToVisualizer = (targetArray)=>{
 
     let visualizer = document.querySelector(".visualizer");
 
-    let blocksArray = targetArray.map((number)=>{
+    let arrayOfBlocks = targetArray.map((number)=>{
         return createBlock(number);
     })
 
-    //empty the visualizer before adding new
+    //empty the visualizer before adding new blocks
     visualizer.innerHTML="";
     
-    for(let i=0;i<blocksArray.length;i++){
-        visualizer.appendChild(blocksArray[i]);
+    for(let i=0;i<arrayOfBlocks.length;i++){
+        visualizer.appendChild(arrayOfBlocks[i]);
     }
 }
 

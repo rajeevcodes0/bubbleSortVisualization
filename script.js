@@ -15,7 +15,6 @@ function init(){
     let shouldLoopRun = false;
     
     //dom elements that we need to manipulate
-    let visualizer = document.getElementsByClassName("visualizer")[0];
     let arrayToTextContainer = document.getElementsByClassName("array-to-text-container")[0];
     let newArrayButton = document.getElementsByClassName("new-array-button")[0];
     let startAnimationButton = document.getElementsByClassName("start-animation-button")[0];
@@ -66,28 +65,44 @@ function init(){
     const startAnimationOnClickHandler = async()=>{
         startAnimationButton.disabled=true;
         sortingStatusDiv.innerText="In Progress";
+
+        //to prevent infinite loop
         let iterationCounter = 0;
         shouldLoopRun=true;
         while(shouldLoopRun){
             
             let index=globalIndex;
             let blocksArray = document.getElementsByClassName("block");
+
+            //highlight the elements in focus
             blocksArray[index].classList.add("block-in-focus");
             blocksArray[index+1].classList.add("block-in-focus");
     
-    
+
+            //if the current element is greater than the next element, swap them
             if(arrayBeingAnimatedCurrentState[index]>arrayBeingAnimatedCurrentState[index+1]){
+
+                //animation classes, this starts the animation
                 blocksArray[index+1].classList.add('move-left');
                 blocksArray[index].classList.add('move-right');
-                //the elements
+
+                //swap the elements internally
                 swap(index,index+1,arrayBeingAnimatedCurrentState);
                 
             }
+            //wait for animation to end
             await sleep(1000);
-            //now remove the focus from blocks
+
+            //now remove the focus from blocks and wait few more seconds
             blocksArray[index+1].classList.remove('block-in-focus');
             blocksArray[index].classList.remove('block-in-focus');
+
             await sleep(1000);
+
+            //if the user created a new array,
+            //then we set false to shouldLoopRun, if that is not the case
+            //or sorting has completed, keep running
+
             if(!shouldLoopRun){
                 break;
             }
@@ -101,10 +116,9 @@ function init(){
     
             //if the loop is not broken
             addBlocksToVisualizer(arrayBeingAnimatedCurrentState);
-            //wait for 1sec
             //to avoid infinite loop
             iterationCounter++;
-            if(iterationCounter==100){
+            if(iterationCounter===1000){
                 break;
             }
         }
