@@ -5,10 +5,56 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+:root{
+    /* --background-color-light:rgb(110, 99, 99);
+    --background-color-dark: rgb(51, 47, 47);
+
+    
+    --container-box-shadow:rgb(29, 27, 27);
+
+    --container-color-light:white;
+    --container-color-dark:rgb(223, 211, 211);
+    --container-color-darker:rgb(154, 144, 144);
+
+    --content-color-one-base:rgb(148, 0, 211);
+    --content-color-one-light:rgb(175, 24, 240);
+    --content-color-one-dark:rgb(104, 1, 148);
+
+    --content-color-two-base:rgb(71, 67, 67);
+
+    --disabled-button-background:rgb(154, 144, 144);
+    --disabled-button-color:rgb(0, 0, 0); */
+
+    /* ---- */
+    --background-color-light:#f5f5f5;
+    --background-color-dark: #e9e8e8;
+
+    
+    --container-box-shadow:rgb(29, 27, 27);
+
+    --container-color-light:white;
+    --container-color-dark:rgb(251, 249, 249);
+    --container-color-darker:rgb(221, 220, 220);
+
+    --content-color-one-base:#ff624f;
+    --content-color-one-light:#fc7060;
+    --content-color-one-dark:#e75646;
+
+    --content-color-two-base:#484e49;
+
+    --disabled-button-background:rgb(154, 144, 144);
+    --disabled-button-color:rgb(0, 0, 0);
+
+}
+
 body{
     height: 100vh;
+
     width: 100vw;
+
     background-image: radial-gradient(rgb(110, 99, 99),rgb(51, 47, 47));
+
+    background-image: radial-gradient(var(--background-color-light),var(--background-color-dark));
 }
 
 .blur-overlay{
@@ -24,6 +70,39 @@ body{
     z-index: 2;
 }
 
+.theme-switch-button-container{
+    position: absolute;
+    top:5%;
+    right:5%;
+    height: 30px;
+    width: 60px;
+    background-color: var(--container-color-light);
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.theme-switch-button{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    background-color: var(--content-color-one-base);
+    transform: scale(0.9);
+}
+.theme-switch-button-light-mode{
+    position: absolute;
+    left:0;
+    transition: all 0.3s;
+}
+.theme-switch-button-dark-mode{
+    position: absolute;
+    left:100%;
+    transform: translateX(-100%) scale(0.9);
+    transition: all 0.3s;
+}
+
 .container{
     width: 80%;
     max-width: 700px;
@@ -35,12 +114,14 @@ body{
     transform: translate(-50%,-50%);
     border-radius: 5px;
     box-shadow: 0px 0px 10px 1px rgb(46, 46, 46);
+    box-shadow: 0px 0px 10px 1px var(--container-box-shadow);
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
     background-image: radial-gradient(white,rgb(223, 211, 211));
+    background-image: radial-gradient(var(--container-color-light),var(--container-color-dark));
     overflow: hidden;
     z-index:3;
     
@@ -51,12 +132,17 @@ body{
     position: absolute;
     height: 100px;
     width: 100px;
+
     background-color:darkviolet;
+    background-color:var(--content-color-one-base);
+
     display: block;
     bottom:-50px;
     right:-50px;
     border-radius: 100%;
+
     box-shadow: 0px 0px 100px 1px darkviolet;
+    box-shadow: 0px 0px 100px 1px var(--content-color-one-base);
 
     animation-name: container-after-animation;
     animation-duration: 3s;
@@ -98,7 +184,8 @@ h1,h3{
 h1{
     margin:10px 0px;
     width: 100%;
-    color:rgb(71, 67, 67)
+    color:rgb(71, 67, 67);
+    color:var(--content-color-two-base);
 }
 
 .pikachu-container{
@@ -110,6 +197,7 @@ h1{
 
 .pikachu-container path,.pikachu-container circle{
     fill:rgb(97, 5, 136);
+    fill: var(--content-color-one-dark);
 }
 
 .initial-array-text{
@@ -123,13 +211,19 @@ h1{
 
 .button-container button{
     padding:10px;
+
     background-color: darkviolet;
+    background-color: var(--content-color-one-base);
+
     color:white;
     border: none;
     width: 100px;
     font-size: 15px;
     border-radius: 10px;
+
     box-shadow: 2px 2px 10px 0px grey;
+    box-shadow: 2px 2px 10px 0px var(--container-color-darker);
+
     transition: all 0.3s;
     cursor: pointer;
 }
@@ -142,8 +236,12 @@ h1{
 
 .button-container button:disabled{
     background-color: rgb(175, 174, 174);
+    background-color: var(--disabled-button-background);
     box-shadow: none;
+
     color:black;
+    color:var(--disabled-button-color);
+
     cursor:auto;
 }
 
@@ -153,6 +251,8 @@ h1{
 
 .array-to-text-container{
     color:darkviolet;
+    color:var(--content-color-one-base);
+
     font-size: 30px;
 }
 
@@ -161,11 +261,14 @@ h1{
     position: relative;
 
     font-size: 25px;
-    color:rgb(255, 255, 255);
     margin:10px 0px;
     /* lighter color than darkviolet so that users don't confuse it with buttons */
     color:#ac4ed4;
+    color:var(--content-color-one-light);
+
     border: 2px dashed #ac4ed4;
+    border: 2px dashed var(--content-color-one-light);
+
     padding:10px;
     padding-top:20px;
     border-radius: 5px;
@@ -178,6 +281,7 @@ h1{
     top:0;
     left:0;
     background-color: #ac4ed4;
+    background-color: var(--content-color-one-light);
     border-top-left-radius: 5px;
     color:white;
     font-size: 15px;
@@ -191,7 +295,9 @@ h1{
 
 .block{
     background-color: rgb(51, 50, 50);
+    background-color: var(--content-color-two-base);
     color:white;
+    color:var(--container-color-light);
     width: 60px;
     font-size: 30px;
     text-align: center;
@@ -203,6 +309,7 @@ h1{
 
 .block-in-focus{
     background-color: darkviolet;
+    background-color: var(--content-color-one-base);
 }
 
 .move-right{
@@ -283,6 +390,9 @@ h1{
         height: 50px;
         width: 50px;;
     }
+    .theme-switch-button-container{
+        transform: scale(0.5);
+    }
 }
 
 @media (max-width:500px){
@@ -298,5 +408,9 @@ h1{
     .pikachu-container{
         height: 50px;
         width: 50px;;
+    }
+    .theme-switch-button-container{
+        transform: scale(0.5);
+        transition: all 0.3s;
     }
 }

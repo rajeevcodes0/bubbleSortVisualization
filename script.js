@@ -19,6 +19,8 @@ function init(){
     let newArrayButton = document.getElementsByClassName("new-array-button")[0];
     let startAnimationButton = document.getElementsByClassName("start-animation-button")[0];
     let sortingStatusDiv = document.getElementsByClassName("sorting-status-div")[0];
+    let themeSwitchButton = document.getElementsByClassName("theme-switch-button")[0];
+
     
     //FUNCTIONS
     
@@ -127,6 +129,46 @@ function init(){
     //event listeners
     newArrayButton.addEventListener('click',newArrayOnClickHandler);
     startAnimationButton.addEventListener("click",startAnimationOnClickHandler);
+    themeSwitchButton.addEventListener("click",function(){
+
+        if(this.classList.contains("theme-switch-button-light-mode")){
+            this.classList.remove("theme-switch-button-light-mode");
+            
+            this.classList.add("theme-switch-button-dark-mode");
+
+            let root = document.querySelector(":root");
+            root.style.setProperty("--background-color-light","rgb(110, 99, 99)");
+            root.style.setProperty("--background-color-dark","rgb(51, 47, 47)");
+            root.style.setProperty("--container-box-shadow","rgb(29, 27, 27)");
+            root.style.setProperty("--container-color-light","white");
+            root.style.setProperty("--container-color-dark","rgb(223, 211, 211)");
+            root.style.setProperty("--container-color-darker","rgb(154, 144, 144)");
+            root.style.setProperty("--content-color-one-base","rgb(148, 0, 211)");
+            root.style.setProperty("--content-color-one-light","rgb(175, 24, 240)");
+            root.style.setProperty("--content-color-one-dark",":rgb(104, 1, 148)");
+            root.style.setProperty("--content-color-two-base","rgb(71, 67, 67)");
+            root.style.setProperty("--disabled-button-background","rgb(154, 144, 144)");
+            root.style.setProperty("--disabled-button-color","rgb(0, 0, 0)");
+
+        }else{
+            this.classList.remove("theme-switch-button-dark-mode");
+            this.classList.add("theme-switch-button-light-mode");
+
+            let root = document.querySelector(":root");
+            root.style.setProperty("--background-color-light","#f5f5f5");
+            root.style.setProperty("--background-color-dark","#e9e8e8");
+            root.style.setProperty("--container-box-shadow","rgb(29, 27, 27)");
+            root.style.setProperty("--container-color-light","white");
+            root.style.setProperty("--container-color-dark","rgb(251, 249, 249)");
+            root.style.setProperty("--container-color-darker","rgb(221, 220, 220)");
+            root.style.setProperty("--content-color-one-base","#ff624f");
+            root.style.setProperty("--content-color-one-light","#fc7060");
+            root.style.setProperty("--content-color-one-dark","#e75646");
+            root.style.setProperty("--content-color-two-base","#484e49");
+            root.style.setProperty("--disabled-button-background","rgb(154, 144, 144)");
+            root.style.setProperty("--disabled-button-color","rgb(0, 0, 0)");
+        }
+    })
 }
 
 init();
