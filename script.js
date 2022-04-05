@@ -132,6 +132,7 @@ function init(){
     themeSwitchButton.addEventListener("click",function(){
 
         if(this.classList.contains("theme-switch-button-light-mode")){
+
             this.classList.remove("theme-switch-button-light-mode");
             
             this.classList.add("theme-switch-button-dark-mode");
@@ -145,7 +146,7 @@ function init(){
             root.style.setProperty("--container-color-darker","rgb(154, 144, 144)");
             root.style.setProperty("--content-color-one-base","rgb(148, 0, 211)");
             root.style.setProperty("--content-color-one-light","rgb(175, 24, 240)");
-            root.style.setProperty("--content-color-one-dark",":rgb(104, 1, 148)");
+            root.style.setProperty("--content-color-one-dark","rgb(104, 1, 148)");
             root.style.setProperty("--content-color-two-base","rgb(71, 67, 67)");
             root.style.setProperty("--disabled-button-background","rgb(154, 144, 144)");
             root.style.setProperty("--disabled-button-color","rgb(0, 0, 0)");
