@@ -3,6 +3,7 @@ import {generateNewArray} from "./scripts/generateNewArray.js";
 import {convertArrayToString} from "./scripts/convertArrayToString.js";
 import {swap} from "./scripts/swap.js";
 import {addBlocksToVisualizer} from './scripts/addBlocksToVisualizer.js';
+import {applyOldTheme} from "./scripts/applyOldTheme.js";
 
 //so that globals don't do scope pollution
 function init(){
@@ -21,6 +22,8 @@ function init(){
     let sortingStatusDiv = document.getElementsByClassName("sorting-status-div")[0];
     let themeSwitchButton = document.getElementsByClassName("theme-switch-button")[0];
 
+    
+    
     
     //FUNCTIONS
     
@@ -129,6 +132,7 @@ function init(){
     //event listeners
     newArrayButton.addEventListener('click',newArrayOnClickHandler);
     startAnimationButton.addEventListener("click",startAnimationOnClickHandler);
+
     themeSwitchButton.addEventListener("click",function(){
 
         if(this.classList.contains("theme-switch-button-light-mode")){
@@ -151,6 +155,8 @@ function init(){
             root.style.setProperty("--disabled-button-background","rgb(154, 144, 144)");
             root.style.setProperty("--disabled-button-color","rgb(0, 0, 0)");
 
+            localStorage.setItem("theme","dark");
+
         }else{
             this.classList.remove("theme-switch-button-dark-mode");
             this.classList.add("theme-switch-button-light-mode");
@@ -168,8 +174,13 @@ function init(){
             root.style.setProperty("--content-color-two-base","#484e49");
             root.style.setProperty("--disabled-button-background","rgb(154, 144, 144)");
             root.style.setProperty("--disabled-button-color","rgb(0, 0, 0)");
+
+            localStorage.setItem("theme","light");
+
         }
     })
+    //remembers the last selected theme
+    applyOldTheme();
 }
 
 init();
