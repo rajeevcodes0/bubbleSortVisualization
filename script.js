@@ -4,6 +4,8 @@ import {convertArrayToString} from "./scripts/convertArrayToString.js";
 import {swap} from "./scripts/swap.js";
 import {addBlocksToVisualizer} from './scripts/addBlocksToVisualizer.js';
 import {applyOldTheme} from "./scripts/applyOldTheme.js";
+import {speedController} from "./scripts/speedController.js";
+
 
 //so that globals don't do scope pollution
 function init(){
@@ -14,6 +16,7 @@ function init(){
     let globalIndex = 0;
     let globalPass = 1;
     let shouldLoopRun = false;
+    let sleepFunctionTime = 1000;
     
     //dom elements that we need to manipulate
     let arrayToTextContainer = document.getElementsByClassName("array-to-text-container")[0];
@@ -79,6 +82,16 @@ function init(){
             let index=globalIndex;
             let blocksArray = document.getElementsByClassName("block");
 
+            let animationDurationInRoot = document.querySelector(":root").style.getPropertyValue("--animation-duration");
+            console.log(animationDurationInRoot);
+            if(animationDurationInRoot==="1s"){
+                sleepFunctionTime=1000;
+            }else if(animationDurationInRoot==="0.5s"){
+                sleepFunctionTime=500;
+            }else if(animationDurationInRoot==="0.25s"){
+                sleepFunctionTime=250;
+            }
+
             //highlight the elements in focus
             blocksArray[index].classList.add("block-in-focus");
             blocksArray[index+1].classList.add("block-in-focus");
@@ -96,13 +109,13 @@ function init(){
                 
             }
             //wait for animation to end
-            await sleep(1000);
+            await sleep(sleepFunctionTime);
 
             //now remove the focus from blocks and wait few more seconds
             blocksArray[index+1].classList.remove('block-in-focus');
             blocksArray[index].classList.remove('block-in-focus');
 
-            await sleep(1000);
+            await sleep(sleepFunctionTime);
 
             //if the user created a new array,
             //then we set false to shouldLoopRun, if that is not the case
@@ -181,6 +194,8 @@ function init(){
     })
     //remembers the last selected theme
     applyOldTheme();
+    //added event listener to speed controller
+    speedController();
 }
 
 init();

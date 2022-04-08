@@ -24,6 +24,8 @@
 
     --disabled-button-background:rgb(154, 144, 144);
     --disabled-button-color:rgb(0, 0, 0);
+    
+    --animation-duration:1s;
 
 }
 
@@ -292,9 +294,24 @@ h1{
     background-color: var(--content-color-one-base);
 }
 
+.speed-controller{
+    position: absolute;
+    bottom:0;
+    right:0;
+    z-index: 3;
+    font-size: 1.5rem;
+    color:var(--container-color-dark);
+    cursor: pointer;
+}
+
+.speed-controller span{
+    font-size: 2rem;
+}
+
 .move-right{
     animation-name: move-block-right-animation;
     animation-duration: 1s;
+    animation-duration: var(--animation-duration);
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     animation-delay: 0s;
@@ -324,6 +341,7 @@ h1{
 .move-left{
     animation-name: move-block-left-animation;
     animation-duration: 1s;
+    animation-duration: var(--animation-duration);
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
 }
